@@ -26,7 +26,7 @@ export default function About1() {
 
     return (
       <div className="bg-gray-50" id="about" data-sal="slide-down">
-        <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:py-32 lg:px-8" >
+        <div className="mx-auto max-w-7xl py-32 px-6 lg:px-8" >
           <motion.div className="text-center" ref={ref}
             animate={animation}
           >
