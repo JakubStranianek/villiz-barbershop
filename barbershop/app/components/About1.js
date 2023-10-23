@@ -25,8 +25,8 @@ export default function About1() {
   }, [isInView])
 
     return (
-      <div className="bg-gray-50" id="about" data-sal="slide-down">
-        <div className="mx-auto max-w-7xl py-32 px-6 lg:px-8" >
+      <div className="bg-[#FFFDF8]" id="about" data-sal="slide-down">
+        <div className="mx-auto max-w-7xl py-16 px-6 lg:px-8" >
           <motion.div className="text-center" ref={ref}
             animate={animation}
           >

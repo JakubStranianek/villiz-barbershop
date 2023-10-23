@@ -26,16 +26,16 @@ useEffect(() => {
       {loading && (
           <SplashScreen />
         )}
-      <Navbar />
-      <Hero />
-      <About1 />
-      <Gallery />
-      <About2 />
-      <Team />
-      <PriceList />
-      <Reviews />
-      <Contact />
-      <Footer />
+        <Navbar />
+        <Hero />
+        <About1 />
+        <Gallery />
+        <About2 />
+        <Team />
+        <PriceList />
+        <Reviews />
+        <Contact />
+        <Footer />
     </main>
   )
 }

@@ -7,7 +7,7 @@ import Image from "next/image"
 export default function Hero() {
 
   return (
-    <div className="static top-0 w-full h-screen bg-gray-50">
+    <div className="static top-0 w-full h-full lg:h-screen bg-[#FFFDF8]">
       <main className="h-full lg:relative">
         <div className="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:text-left lg:h-full lg:flex lg:items-center">
           <motion.div className="px-6 sm:px-8 lg:w-1/2 xl:pr-16"
@@ -17,7 +17,7 @@ export default function Hero() {
           >
             <h1 className="pt-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl lg:pt-0 xl:text-6xl">
               <span className="block xl:inline">Staň sa najlepšiou verziou</span>{' '}
-              <span className="block text-[#BFAEA8] xl:inline">seba samého</span>
+              <span className="block text-myCamel xl:inline">seba samého</span>
             </h1>
             <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
               Viac ako nový strih. Zverte sa do 
@@ -29,7 +29,7 @@ export default function Hero() {
               >              
                 <Link
                   href="/#priceList"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#BFAEA8] px-8 py-3 text-base font-medium text-white hover:bg-[#BFAEA8] hover:bg-opacity-70 md:py-4 md:px-10 md:text-lg"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-myCamel px-8 py-3 text-base font-medium text-white hover:bg-myCamel hover:bg-opacity-70 md:py-4 md:px-10 md:text-lg"
                 >
                   Pozri služby
                 </Link>
@@ -39,7 +39,7 @@ export default function Hero() {
               >
                 <Link
                   href="/#kontakt"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-[#BFAEA8] hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-myCamel hover:bg-[#FFFDF8] md:py-4 md:px-10 md:text-lg"
                 >
                   Objednaj sa
                 </Link>
@@ -58,6 +58,7 @@ export default function Hero() {
             width={960}
             height={742}
             alt="hero2"
+            priority={true}
           />
         </motion.div>
       </main>

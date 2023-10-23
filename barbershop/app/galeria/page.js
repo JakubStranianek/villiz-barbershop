@@ -24,7 +24,7 @@ const people = [
 
   function Galeria() {
   return (
-    <div className='bg-gray-50 w-full'>      
+    <div className='bg-[#FFFDF8] w-full'>      
       <div className='flex flex-row justify-center flex-wrap py-10'>
         <div className='pr-4'>
         <Link href="/galeria/"

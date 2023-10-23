@@ -33,7 +33,7 @@ const files = [
     }
 
     return (
-       <div className="bg-gray-50">
+       <div className="bg-[#FFFDF8]">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <motion.div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"
         animate={animation}
@@ -44,7 +44,7 @@ const files = [
                 <Image
                   src={photo.source}
                   alt={photo.id + photo.source}
-                  className="h-full w-full focus:outline-[#BFAEA8] object-cover object-center lg:h-full lg:w-full"
+                  className="h-full w-full focus:outline-myCamel object-cover object-center lg:h-full lg:w-full"
                   width={500}
                   height={500}
                   onClick={setValues}                 

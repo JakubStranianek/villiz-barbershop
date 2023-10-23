@@ -24,7 +24,7 @@ const people = [
   
   export default function Team() {
     return (
-      <div className="bg-gray-50" id="team">
+      <div className="bg-[#FFFDF8]" id="team">
         <div className="mx-auto max-w-7xl py-12 px-6 lg:px-8 lg:py-24">
           <div className="space-y-12">
             <div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">

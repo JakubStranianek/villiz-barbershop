@@ -34,7 +34,7 @@ export default function Example() {
   }, [isInView])
 
   return (
-    <div className="bg-gray-50" id="priceList">
+    <div className="bg-[#FFFDF8]" id="priceList">
       <motion.div aria-hidden="true" className="relative" ref={ref} animate={animation}>
         <Image
           src="/images/priceList-bg.png"

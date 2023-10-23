@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function Example() {
   return (
-    <div className="bg-gray-50" id="kontakt">
+    <div className="bg-[#FFFDF8]" id="kontakt">
       <div className="mx-auto max-w-7xl py-16 px-6 lg:px-8">
         <div className="mx-auto max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-8">
           <div>

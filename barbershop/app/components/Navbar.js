@@ -20,7 +20,7 @@ const navigation = [
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="bg-gray-50 scroll-smooth relative z-10">
+    <Disclosure as="nav" className="bg-[#FFFDF8] scroll-smooth relative z-10">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -38,7 +38,7 @@ export default function Example() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link href="/">
+                  <Link href="/" aria-label='homePage'>
                     <Image
                       className="block h-8 w-auto lg:hidden"
                       src="/images/logoB.png"
@@ -47,7 +47,7 @@ export default function Example() {
                       alt="Villiz Barbershop"
                     />
                   </Link>
-                  <Link href="/">
+                  <Link href="/" aria-label='homePage'>
                   <Image
                     className="hidden h-8 w-auto lg:block"
                     src="/images/logoB.png"
@@ -66,7 +66,7 @@ export default function Example() {
                         key={item.name}
                         passHref={true}
                         className={classNames(
-                        item.current ? 'bg-myTeal text-white' : 'text-[#024059] hover:bg-myTeal hover:bg-opacity-70 hover:text-white',
+                        item.current ? 'bg-myCamel text-white' : 'text-[#024059] hover:bg-myCamel hover:bg-opacity-70 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={item.current ? true : undefined}
