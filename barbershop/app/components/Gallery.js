@@ -8,13 +8,13 @@ import Image from "next/image";
 
 const files = [
     {
-      source: '/images/gallery1.jpg',
+      source: '/images/gallery1.JPG',
     },
     {
-        source: '/images/gallery2.jpg',
+        source: '/images/gallery2.JPG',
     },
     {
-        source: '/images/gallery3.jpg',
+        source: '/images/gallery3.JPG',
     }
   ]
   

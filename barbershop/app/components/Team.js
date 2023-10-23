@@ -7,7 +7,7 @@ const people = [
       name: 'Viliam Stranianek',
       role: 'Villiz Barber',
       imageUrl:
-        '/images/team1.jpg',
+        '/images/team1.JPG',
       instaUrl: 'https://www.instagram.com/villiz_barber',
       phoneNumber: '+421918778993',
     },
