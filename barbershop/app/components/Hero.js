@@ -55,8 +55,8 @@ export default function Hero() {
           <Image
             className="absolute inset-0 h-full w-full object-cover"
             src="/images/hero-photo2.jpg"
-            width={960}
-            height={742}
+            width={800}
+            height={300}
             alt="hero2"
             priority={true}
           />

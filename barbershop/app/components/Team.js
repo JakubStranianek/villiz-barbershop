@@ -13,7 +13,7 @@ const people = [
     },
     {
       name: 'Barber wanted',
-      role: 'Chceš to byť práve ty? 🫵🏽',
+      role: 'Chceš to byť práve ty? 👊',
       imageUrl:
         '/images/barber-wanted.jpg',
       instaUrl: 'https://www.instagram.com/villiz_barber',
@@ -47,7 +47,7 @@ const people = [
                     <div className="space-y-2">
                       <div className="space-y-1 text-lg font-medium leading-6">
                         <h3>{person.name}</h3>
-                        <p className="text-indigo-600">{person.role}</p>
+                        <p className="text-myCamel">{person.role}</p>
                       </div>
                       <ul role="list" className="flex space-x-5">
                         <li>
