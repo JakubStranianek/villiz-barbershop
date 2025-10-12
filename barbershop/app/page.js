@@ -11,21 +11,12 @@ import Contact from './components/Contact'
 import Footer from './components/FooterSection'
 import SplashScreen from './components/Splash'
 import { useEffect, useState } from 'react'
+import AnimatedNavbar from './components/AnimatedNavbar'
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
-
-useEffect(() => {
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
-}) 
 
   return (
     <main className="">
-      {loading && (
-          <SplashScreen />
-        )}
         <Navbar />
         <Hero />
         <About1 />

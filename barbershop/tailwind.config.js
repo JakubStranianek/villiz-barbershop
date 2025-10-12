@@ -16,6 +16,9 @@ module.exports = {
         "myTeal": "#1A7465",
         "myCamel": "#8A6350",
       },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [
