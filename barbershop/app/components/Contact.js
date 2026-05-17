@@ -1,59 +1,138 @@
-import * as React from "react"
-import { EnvelopeIcon, PhoneIcon, HomeIcon } from '@heroicons/react/24/outline'
-import Link from "next/link"
+"use client"
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import Link from 'next/link'
+import {
+  IconMapPin,
+  IconPhone,
+  IconBrandInstagram,
+  IconExternalLink,
+} from '@tabler/icons-react'
 
-export default function Example() {
+const contacts = [
+  {
+    icon: IconMapPin,
+    label: 'Adresa',
+    lines: ['Alexandra Rudnaya 45', '010 01 Žilina', 'Villiz Barbershop'],
+    href: 'https://www.google.com/maps/dir//villizbarbershop/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x47145fc2a67a2e77:0x751dea2c9af113b5?sa=X&ved=2ahUKEwiyj8u62uX8AhUWgv0HHWaADtQQ9Rd6BAgZEAU',
+    cta: 'Navigovať',
+  },
+  {
+    icon: IconPhone,
+    label: 'Telefón',
+    lines: ['0918 778 993'],
+    href: 'tel:+421918778993',
+    cta: null,
+  },
+  {
+    icon: IconBrandInstagram,
+    label: 'Instagram',
+    lines: ['@villiz_barber'],
+    href: 'https://www.instagram.com/villiz_barber',
+    cta: 'Sledovať',
+  },
+]
+
+export default function Contact() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
+
   return (
-    <div className="bg-[#FFFDF8]" id="kontakt">
-      <div className="mx-auto max-w-7xl py-16 px-6 lg:px-8">
-        <div className="mx-auto max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">Adresa</h2>
-            <div className="mt-9">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <HomeIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                </div>
-                <div className="ml-3 text-base text-gray-500">
-                  <p>Alexandra Rudnaya 45</p>
-                  <p className="mt-1">010 01 Žilina</p>
-                  <p className="mt-1">Villiz Barbershop</p>
-                </div>
+    <section
+      id="kontakt"
+      style={{ background: 'var(--bg-secondary)', paddingBlock: '88px' }}
+    >
+      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="section-label">— Kontakt</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="font-display mt-4"
+          style={{
+            fontSize: 'clamp(32px, 5vw, 52px)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            color: 'var(--cream)',
+            maxWidth: '460px',
+            marginBottom: '40px',
+          }}
+        >
+          Nájdi nás a objednaj sa
+        </motion.h2>
+
+        {/* Contact cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+          {contacts.map((contact, i) => (
+            <motion.div
+              key={contact.label}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.1 + i * 0.08 }}
+              className="gold-card p-6"
+            >
+              {/* Icon + label */}
+              <div className="flex items-center gap-2 mb-4">
+                <contact.icon size={18} style={{ color: 'var(--gold)' }} stroke={1.5} />
+                <span
+                  style={{
+                    fontSize: '11px',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'var(--gold)',
+                    fontWeight: 500,
+                  }}
+                >                 
+                  {contact.label}
+                </span>
               </div>
-            </div>
-          </div>
-          <div className="mt-12 sm:mt-16 md:mt-0">
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">Kontakt</h2>
-            <div className="mt-9">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <PhoneIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                </div>
-                <div className="ml-3 text-base text-gray-500">
-                  <Link href="tel:+421 918 778 993">0918 778 993</Link>
-                </div>
+
+              {/* Lines */}
+              <div className="mb-4">
+                {contact.lines.map((line, j) => (
+                  <p
+                    key={j}
+                    style={{
+                      fontSize: '14px',
+                      color: 'var(--cream)',
+                      fontWeight: j === 0 ? 400 : 300,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                     <Link href={contact.href} target="_blank" rel="noopener noreferrer" className='hover:text-gold transition-colors duration-200'>
+                    {line}
+                    </Link>
+                  </p>
+                ))}
               </div>
-              <div className="mt-6 flex">
-                <div className="flex-shrink-0">
-                  <EnvelopeIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                </div>
-                <div className="ml-3 text-base text-gray-500">
-                  <Link href="mailto:viliam.stranianek7@gmail.com">viliam.stranianek7@gmail.com</Link>
-                </div>
-              </div>
-              <div className="mt-6 flex">
-              <Link href="https://www.google.com/maps/dir//villizbarbershop/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x47145fc2a67a2e77:0x751dea2c9af113b5?sa=X&ved=2ahUKEwiyj8u62uX8AhUWgv0HHWaADtQQ9Rd6BAgZEAU" target={"_blank"}> 
-              <button
-        type="button"
-        className="inline-flex items-center rounded-md border border-transparent bg-myCamel px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-myCamel hover:bg-opacity-70"
-      >Navigovať pomocou Google Maps
-      </button>
-      </Link>
-              </div>
-            </div>
-          </div>
+
+              {/* CTA link */}
+              {contact.cta && (
+                <Link
+                  href={contact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 transition-colors duration-200"
+                  style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: 400, letterSpacing: '0.05em' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-light)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+                >
+                  {contact.cta}
+                  <IconExternalLink size={12} stroke={1.5} />
+                </Link>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

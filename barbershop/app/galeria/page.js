@@ -1,65 +1,147 @@
-import Image from 'next/image'  
+"use client"
+import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
-const people = [
-    {
-      "source": '/images/gallery/img1.png'
-    },
-    {
-      "source": '/images/gallery/img6.png'
-    },
-    {
-      "source": '/images/gallery/img3.png'
-    },
-    {
-      "source": '/images/gallery/img2.png'
-    },
-    {
-      "source": '/images/gallery/img5.png'
-    },
-    {
-      "source": '/images/gallery/img4.png'
-    },
-  ]
+const photos = [
+  { src: '/images/gallery1.JPG', alt: 'Villiz Barbershop – interiér' },
+  { src: '/images/gallery2.JPG', alt: 'Villiz Barbershop – detail' },
+  { src: '/images/gallery3.JPG', alt: 'Villiz Barbershop – atmosféra' },
+  { src: '/images/gallery/img1.png', alt: 'Strih 1' },
+  { src: '/images/gallery/img2.png', alt: 'Strih 2' },
+  { src: '/images/gallery/img3.png', alt: 'Strih 3' },
+  { src: '/images/gallery/img4.png', alt: 'Strih 4' },
+  { src: '/images/gallery/img5.png', alt: 'Strih 5' },
+  { src: '/images/gallery/img6.png', alt: 'Strih 6' },
+]
 
-  function Galeria() {
+function GalleryCard({ src, alt, index }) {
+  const [hovered, setHovered] = useState(false)
+
   return (
-    <div className='bg-[#FFFDF8] w-full'>      
-      <div className='flex flex-row justify-center flex-wrap py-10'>
-        <div className='pr-4'>
-        <Link href="/galeria/"
-          type="button"
-          className="inline-flex items-center rounded-md border border-transparent bg-myCamel px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-myCamel focus:ring-offset-2"
-        >
-          Fotky
-        </Link>
-        </div>
-
-          <div className='pl-4'>
-        <Link href="/galeria/videa"
-          type="button"
-          className="inline-flex items-center rounded-md border border-transparent bg-myCamel px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-myCamel focus:ring-offset-2"
-          >
-          Videá
-        </Link>  
-            </div>
-          </div>
-
-    <div className="mx-auto px-6 py-10 max-w-7xl sm:px-6 lg:px-8">
-      <div role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-      {people.map(index => {
-        return (
-        <div key={index + index.source} className="col-span-1 flex flex-col rounded-lg text-center shadow">
-          <div className="flex flex-1 flex-col">           
-              <img className="w-full h-full rounded-lg" src={index.source} alt="1" />                               
-          </div>         
-        </div>
-        )
-      })}
-    </div>
-    </div>
-  </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      className="relative overflow-hidden"
+      style={{
+        borderRadius: '4px',
+        border: '0.5px solid rgba(200,169,126,0.3)',
+        cursor: 'pointer',
+        transition: 'border-color 0.25s ease',
+        borderColor: hovered ? 'rgba(200,169,126,0.7)' : 'rgba(200,169,126,0.3)',
+        aspectRatio: index % 4 === 0 ? '3/4' : '4/3',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Image
+        src={src}
+        fill
+        alt={alt}
+        style={{
+          objectFit: 'cover',
+          transition: 'transform 0.4s ease',
+          transform: hovered ? 'scale(1.04)' : 'scale(1)',
+        }}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+      {/* Hover overlay */}
+      <div
+        className="absolute inset-0 transition-opacity duration-300"
+        style={{
+          background: 'rgba(26,26,24,0.35)',
+          opacity: hovered ? 1 : 0,
+        }}
+      />
+    </motion.div>
   )
 }
 
-export default Galeria
+export default function Galeria() {
+  return (
+    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', paddingTop: '64px' }}>
+      {/* Header */}
+      <div
+        style={{
+          background: 'var(--bg-secondary)',
+          borderBottom: '0.5px solid rgba(200,169,126,0.2)',
+          paddingBlock: '56px',
+        }}
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <span className="section-label">— Galéria</span>
+          <h1
+            className="font-display mt-3"
+            style={{
+              fontSize: 'clamp(36px, 6vw, 64px)',
+              fontWeight: 700,
+              lineHeight: 1.08,
+              color: 'var(--cream)',
+              maxWidth: '520px',
+            }}
+          >
+            Naša práca
+          </h1>
+          <p
+            style={{
+              marginTop: '16px',
+              color: 'var(--muted)',
+              fontWeight: 300,
+              maxWidth: '400px',
+              lineHeight: 1.7,
+            }}
+          >
+            Zábery z nášho barbershopu a ukážky našej práce.
+          </p>
+
+          {/* Tab navigation */}
+          <div className="flex gap-3 mt-8">
+            <Link href="/galeria" className="btn-primary" style={{ fontSize: '12px', padding: '8px 24px' }}>
+              Fotky
+            </Link>
+            <Link
+              href="/galeria/videa"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '8px 24px',
+                fontSize: '12px',
+                letterSpacing: '0.06em',
+                color: 'var(--muted)',
+                border: '0.5px solid rgba(200,169,126,0.25)',
+                borderRadius: '2px',
+                transition: 'color 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--gold)'
+                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.5)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--muted)'
+                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.25)'
+              }}
+            >
+              Videá
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Separator */}
+      <div className="section-separator" />
+
+      {/* Grid */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          {photos.map((photo, i) => (
+            <div key={photo.src} className="break-inside-avoid">
+              <GalleryCard src={photo.src} alt={photo.alt} index={i} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  )
+}

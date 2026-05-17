@@ -7,17 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        display: ['var(--font-cormorant)', 'Georgia', 'serif'],
+        body: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        "myTeal": "#1A7465",
-        "myCamel": "#8A6350",
-      },
-      fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
+        'bg-primary': '#1a1a18',
+        'bg-secondary': '#242420',
+        'bg-card': '#2e2e28',
+        forest: '#2d4a32',
+        gold: '#c8a97e',
+        'gold-light': '#e0c49a',
+        cream: '#f5f0e8',
+        muted: '#8a8678',
+        'gold-border': 'rgba(200,169,126,0.25)',
       },
     },
   },

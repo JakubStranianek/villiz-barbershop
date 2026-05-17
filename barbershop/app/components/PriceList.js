@@ -1,69 +1,170 @@
 "use client"
-import * as React from "react"
-import {motion, useAnimation} from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef, useEffect } from "react"
-import Image from "next/image"
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import Image from 'next/image'
+import {
+  IconScissors,
+  IconUser,
+  IconStars,
+  IconCrown,
+  IconDiamond,
+} from '@tabler/icons-react'
 
-const features = [
-  { name: '💈 Junior', description: 'Strih nožničkami a strojčekom pre deti do 10 rokov', price: "15€" },
-  { name: '💈 Basic', description: 'Uprava brady', price: "15€" },
-  { name: '💈 Standard', description: 'Pánsky strih nožničkami a strojčekom', price: "20€" },
-  { name: '💈 Premium', description: 'Oholenie hlavy, úprava fúzov a brady', price: "28€" },
-  { name: '💈 Gold', description: 'Pánsky strih, úprava fúzov a brady', price: "30€" },
+const services = [
+  {
+    icon: IconUser,
+    name: 'Junior',
+    description: 'Strih nožničkami a strojčekom pre deti do 8 rokov',
+    price: '18€',
+  },
+  {
+    icon: IconScissors,
+    name: 'Basic',
+    description: 'Úprava brady',
+    price: '15€',
+  },
+  {
+    icon: IconScissors,
+    name: 'Standard',
+    description: 'Pánsky strih nožničkami a strojčekom',
+    price: '23€',
+  },
+  {
+    icon: IconStars,
+    name: 'Premium',
+    description: 'Oholenie hlavy, úprava fúzov a brady',
+    price: '28€',
+  },
+  {
+    icon: IconCrown,
+    name: 'Gold',
+    description: 'Pánsky strih, úprava fúzov a brady',
+    price: '33€',
+  },
 ]
 
-export default function Example() {
+export default function PriceList() {
   const ref = useRef(null)
-  const isInView = useInView(ref)
-  const animation = useAnimation()
-
-  useEffect(() => {
-    if (isInView) {
-      animation.start({
-        y: 0, opacity: 1,
-        transition: {
-          type: "spring", duration: 1.5
-        }
-      })
-    } else {
-      animation.start({
-        y: '-1000', opacity: 0 
-      })
-    }
-  }, [isInView])
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <div className="bg-[#FFFDF8]" id="priceList">
-      <motion.div aria-hidden="true" className="relative" ref={ref} animate={animation}>
+    <section
+      id="priceList"
+      className="relative"
+      style={{ background: 'var(--bg-primary)', paddingBlock: '88px', overflow: 'hidden' }}
+    >
+      {/* Subtle texture background image */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Image
           src="/images/priceList-bg.png"
-          width={1920}
-          height={1080}
+          fill
           alt=""
-          className="h-96 w-full object-cover object-center"
+          style={{ objectFit: 'cover', opacity: 0.06, mixBlendMode: 'multiply' }}
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white" />
-      </motion.div>
+      </div>
 
-      <div className="relative mx-auto -mt-12 max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Cenník našich služieb</h2>
-          <p className="mt-4 text-gray-500">
-          Cenník platný od 1.12.2022
-          </p>
-        </div>
+      <div ref={ref} className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="section-label">— Cenník</span>
+        </motion.div>
 
-        <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
-          {features.map((feature) => (
-            <div key={feature.name} className="border-t border-gray-200 pt-4">
-              <dt className="font-medium text-gray-900">{feature.name}</dt>
-              <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>
-              <dd className="mt-2 text-base text-gray-500">{feature.price}</dd>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="font-display mt-4"
+          style={{
+            fontSize: 'clamp(32px, 5vw, 52px)',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            color: 'var(--cream)',
+            maxWidth: '400px',
+            marginBottom: '40px',
+          }}
+        >
+          Cenník našich služieb
+        </motion.h2>
+
+        {/* Price list block */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          style={{
+            border: '0.5px solid rgba(200,169,126,0.3)',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            maxWidth: '760px',
+          }}
+        >
+          {services.map((service, i) => (
+            <div
+              key={service.name}
+              className="flex items-center gap-4 px-6 py-5 transition-colors duration-200"
+              style={{
+                borderTop: i > 0 ? '1px solid rgba(200,169,126,0.15)' : 'none',
+                background: 'var(--bg-card)',
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#353530')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--bg-card)')}
+            >
+              {/* Icon */}
+              <div
+                className="flex-shrink-0 flex items-center justify-center rounded-full"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  background: 'rgba(200,169,126,0.1)',
+                  border: '0.5px solid rgba(200,169,126,0.3)',
+                }}
+              >
+                <service.icon size={18} style={{ color: 'var(--gold)' }} stroke={1.5} />
+              </div>
+
+              {/* Name + description */}
+              <div className="flex-1 min-w-0">
+                <div style={{ fontSize: '15px', fontWeight: 500, color: 'var(--cream)' }}>
+                  {service.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: '13px',
+                    color: 'var(--muted)',
+                    fontWeight: 300,
+                    marginTop: '2px',
+                  }}
+                >
+                  {service.description}
+                </div>
+              </div>
+
+              {/* Price */}
+              <div
+                className="font-display flex-shrink-0"
+                style={{ fontSize: '22px', fontWeight: 700, color: 'var(--gold)' }}
+              >
+                {service.price}
+              </div>
             </div>
           ))}
-        </dl>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '16px', fontWeight: 300 }}
+        >
+          Cenník platný od 1.12.2022
+        </motion.p>
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,7 +1,19 @@
-import { Inter } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'Villiz barbershop | Barbershop Zilina',
@@ -10,8 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="sk">
+      <body className={`${dmSans.variable} ${cormorant.variable}`}>{children}</body>
     </html>
   )
 }

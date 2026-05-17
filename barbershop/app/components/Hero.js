@@ -1,67 +1,187 @@
 "use client"
-import * as React from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
+
+const stats = [
+  { num: '5+', label: 'rokov skúseností' },
+  { num: '100%', label: 'spokojnosť' },
+  {
+    num: 'Žilina Bôrik',
+    label: 'nájdeš nás tu',
+    href: 'https://www.google.com/maps/dir//villizbarbershop/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x47145fc2a67a2e77:0x751dea2c9af113b5?sa=X&ved=2ahUKEwiyj8u62uX8AhUWgv0HHWaADtQQ9Rd6BAgZEAU',
+  },
+]
 
 export default function Hero() {
-
   return (
-    <div className="static top-0 w-full h-full lg:h-screen bg-[#FFFDF8]">
-      <main className="h-full lg:relative">
-        <div className="mx-auto w-full max-w-7xl pt-16 pb-20 text-center lg:text-left lg:h-full lg:flex lg:items-center">
-          <motion.div className="px-6 sm:px-8 lg:w-1/2 xl:pr-16"
-            initial={{y: -100, opacity: 0}}
-            animate={{y:0, opacity: 1}}
-            transition={{delay: 1, duration: 1}}
-          >
-            <h1 className="pt-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl lg:pt-0 xl:text-6xl">
-              <span className="block xl:inline">Staň sa najlepšiou verziou</span>{' '}
-              <span className="block text-myCamel xl:inline">seba samého</span>
-            </h1>
-            <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-              Viac ako nový strih. Zverte sa do 
-              rúk naším profesionálom, ktorý majú vášeň pre barbierstvo.
-            </p>
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <motion.div className="rounded-md shadow"
-                whileHover={{scale: [1,1.1]}}
-              >              
-                <Link
-                  href="/#priceList"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-myCamel px-8 py-3 text-base font-medium text-white hover:bg-myCamel hover:bg-opacity-70 md:py-4 md:px-10 md:text-lg"
-                >
-                  Pozri služby
-                </Link>
-              </motion.div>
-              <motion.div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3"
-                whileHover={{scale: [1,1.1]}}
-              >
-                <Link
-                  href="/#kontakt"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-myCamel hover:bg-[#FFFDF8] md:py-4 md:px-10 md:text-lg"
-                >
-                  Objednaj sa
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-        <motion.div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
-            initial={{x: -100, opacity: 0}}
-            animate={{x:0, opacity: 1}}
-            transition={{delay: 1, duration: 1}}
+    <section className="relative min-h-screen flex flex-col pt-16">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/priceList-bg.png"
+          fill
+          alt=""
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          priority
+          quality={85}
+        />
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(rgba(26,26,24,0.75), rgba(26,26,24,0.4))',
+          }}
+        />
+        {/* Subtle diagonal texture */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(200,169,126,0.025) 2px, rgba(200,169,126,0.025) 4px)',
+          }}
+        />
+      </div>
+
+      {/* Main content */}
+      <div
+        className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center"
+        style={{ paddingTop: '80px', paddingBottom: '60px' }}
+      >
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full"
+          style={{
+            border: '1px solid rgba(200,169,126,0.5)',
+            background: 'rgba(26,26,24,0.55)',
+            backdropFilter: 'blur(8px)',
+            color: 'var(--gold)',
+            fontSize: '11px',
+            letterSpacing: '0.14em',
+            fontWeight: 500,
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-body)',
+          }}
         >
-          <Image
-            className="absolute inset-0 h-full w-full object-cover"
-            src="/images/hero-photo2.jpg"
-            width={800}
-            height={300}
-            alt="hero2"
-            priority={true}
-          />
+          ✦ Barbershop Žilina
         </motion.div>
-      </main>
-    </div>
+
+        {/* H1 */}
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' }}
+          className="font-display"
+          style={{
+            fontSize: 'clamp(44px, 7vw, 72px)',
+            fontWeight: 700,
+            lineHeight: 1.08,
+            color: 'var(--cream)',
+            maxWidth: '740px',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Staň sa najlepšou{' '}
+          <span style={{ color: 'var(--gold)' }}>verziou</span>
+          {' '}seba samého
+        </motion.h1>
+
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.65, delay: 0.2 }}
+          style={{
+            maxWidth: '380px',
+            marginTop: '24px',
+            color: 'rgba(245,240,232,0.75)',
+            fontWeight: 300,
+            lineHeight: 1.75,
+            fontSize: '16px',
+          }}
+        >
+          Viac ako nový strih. Zverte sa do rúk naším profesionálom,
+          ktorí majú vášeň pre barbierstvo.
+        </motion.p>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4 mt-10"
+        >
+          <Link href="/#priceList" className="btn-primary">
+            Pozri služby
+          </Link>
+          <Link href="/#kontakt" className="btn-ghost">
+            Objednaj sa
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Stats strip */}
+      <div
+        className="relative z-10 w-full"
+        style={{
+          borderTop: '1px solid rgba(200,169,126,0.2)',
+          background: 'rgba(26,26,24,0.65)',
+          backdropFilter: 'blur(12px)',
+        }}
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3">
+            {stats.map((stat, i) => {
+              const sharedStyle = {
+                borderLeft: i > 0 ? '1px solid rgba(200,169,126,0.2)' : 'none',
+              }
+              const content = (
+                <>
+                  <div
+                    className="font-display"
+                    style={{ fontSize: '36px', fontWeight: 700, color: 'var(--gold)', lineHeight: 1 }}
+                  >
+                    {stat.num}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '11px',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: 'var(--muted)',
+                      marginTop: '6px',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {stat.label}
+                  </div>
+                </>
+              )
+              return stat.href ? (
+                <Link
+                  key={i}
+                  href={stat.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-8 text-center block"
+                  style={{ ...sharedStyle, textDecoration: 'none', transition: 'opacity 0.2s' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div key={i} className="py-8 text-center" style={sharedStyle}>
+                  {content}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

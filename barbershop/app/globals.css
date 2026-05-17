@@ -3,25 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-primary: #1a1a18;
+  --bg-secondary: #242420;
+  --bg-card: #2e2e28;
+  --green: #2d4a32;
+  --gold: #c8a97e;
+  --gold-light: #e0c49a;
+  --gold-border: rgba(200, 169, 126, 0.25);
+  --cream: #f5f0e8;
+  --muted: #8a8678;
+  --font-display: var(--font-cormorant), 'Georgia', serif;
+  --font-body: var(--font-dm-sans), 'system-ui', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--bg-primary);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(200, 169, 126, 0.03) 2px,
+    rgba(200, 169, 126, 0.03) 4px
+  );
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.section-separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.4), transparent);
+  border: none;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.gold-card {
+  background: var(--bg-card);
+  border: 0.5px solid rgba(200, 169, 126, 0.3);
+  border-radius: 4px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background: var(--gold);
+  color: #1a1a18;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background: transparent;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(245, 240, 232, 0.4);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
 }

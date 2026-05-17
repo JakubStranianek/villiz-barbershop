@@ -1,62 +1,251 @@
-import Link from "next/link"
-import Image from "next/image"
+"use client"
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import {
+  IconPhone,
+  IconBrandInstagram,
+  IconScissors,
+  IconStar,
+  IconUsers,
+} from '@tabler/icons-react'
 
-if (typeof window !== "undefined") {
-  // eslint-disable-next-line global-require
-  require("smooth-scroll")('a[href*="#"]')
-}
+const perks = [
+  {
+    icon: IconScissors,
+    title: 'Moderné vybavenie',
+    description: 'Pracuj s profesionálnymi náradím a vybavením v štýlovom priestore.',
+  },
+  {
+    icon: IconStar,
+    title: 'Rozvoj a rast',
+    description: 'Neustále zdokonaľovanie remesla, kurzy a mentorstvo od skúsených barberOV.',
+  },
+  {
+    icon: IconUsers,
+    title: 'Skvelý kolektív',
+    description: 'Priateľská atmosféra a tím, ktorý ťa podporuje každý deň.',
+  },
+]
 
-export default function Home() {
+export default function Kariera() {
   return (
-      <div className="bg-[#FFFDF8]">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
-          <h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Hľadáš pracovnú pozíciu v tomto remesle?
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Neváhaj nás kontaktovať. Telefonicky alebo cez instagram a dohodneme si stretnutie kde by sme všetko prejednali. 
-            Tešíme sa na TEBA.
-          </p>
-          <div className="mt-10 flex items-center gap-x-6">
+    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', paddingTop: '64px' }}>
+      {/* Hero with barber-wanted.jpg */}
+      <section
+        className="relative flex items-center justify-center"
+        style={{ minHeight: '60vh' }}
+      >
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/barber-wanted.jpg"
+            fill
+            alt="Barber wanted – Villiz Barbershop"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+            quality={85}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(rgba(26,26,24,0.8), rgba(26,26,24,0.55))',
+            }}
+          />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="section-label">— Kariéra</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="font-display mt-4"
+            style={{
+              fontSize: 'clamp(38px, 6vw, 68px)',
+              fontWeight: 700,
+              lineHeight: 1.08,
+              color: 'var(--cream)',
+              maxWidth: '640px',
+              margin: '16px auto 0',
+            }}
+          >
+            Hľadáš pozíciu<br />
+            v tomto <span style={{ color: 'var(--gold)' }}>remesle</span>?
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              marginTop: '20px',
+              color: 'rgba(245,240,232,0.75)',
+              fontWeight: 300,
+              maxWidth: '420px',
+              margin: '20px auto 0',
+              lineHeight: 1.75,
+              fontSize: '16px',
+            }}
+          >
+            Neváhaj nás kontaktovať — telefonicky alebo cez Instagram.
+            Dohodneme si stretnutie a prejednáme všetko. Tešíme sa na TEBA.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+          >
+            <Link href="tel:+421918778993" className="btn-primary">
+              <IconPhone size={16} stroke={1.5} style={{ marginRight: '8px' }} />
+              Zavolaj nám
+            </Link>
             <Link
-              href="tel:+421 918 778 993"
-              className="rounded-md bg-myCamel px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-myCamel"
+              href="https://www.instagram.com/villiz_barber/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
             >
-              Zavolaj
+              <IconBrandInstagram size={16} stroke={1.5} style={{ marginRight: '8px' }} />
+              Napíš na Instagram
             </Link>
-            <Link href="https://www.instagram.com/villiz_barber/" className="text-base font-semibold leading-7 text-gray-900">
-              Napíš <span aria-hidden="true">→</span>
-            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Separator */}
+      <div className="section-separator" />
+
+      {/* Perks section */}
+      <section style={{ background: 'var(--bg-secondary)', paddingBlock: '88px' }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <span className="section-label">— Čo ponúkame</span>
+          <h2
+            className="font-display mt-4"
+            style={{
+              fontSize: 'clamp(28px, 4vw, 48px)',
+              fontWeight: 700,
+              lineHeight: 1.1,
+              color: 'var(--cream)',
+              maxWidth: '480px',
+              marginBottom: '40px',
+            }}
+          >
+            Prečo pracovať<br />
+            s Villiz Barbershop
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+            {perks.map((perk, i) => (
+              <motion.div
+                key={perk.title}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.1 + i * 0.1 }}
+                className="gold-card p-6"
+              >
+                <div
+                  className="flex items-center justify-center mb-4"
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '4px',
+                    background: 'rgba(200,169,126,0.1)',
+                    border: '0.5px solid rgba(200,169,126,0.25)',
+                  }}
+                >
+                  <perk.icon size={20} style={{ color: 'var(--gold)' }} stroke={1.5} />
+                </div>
+                <h3
+                  style={{
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    color: 'var(--cream)',
+                    marginBottom: '8px',
+                  }}
+                >
+                  {perk.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: '14px',
+                    color: 'var(--muted)',
+                    lineHeight: 1.65,
+                    fontWeight: 300,
+                  }}
+                >
+                  {perk.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-        <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
-          <svg viewBox="0 0 366 729" role="img" className="mx-auto w-[22.875rem] max-w-full drop-shadow-xl">
-            <title>App screenshot</title>
-            <defs>
-              <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
-                <rect width={316} height={684} rx={36} />
-              </clipPath>
-            </defs>
-            <path
-              fill="#4B5563"
-              d="M363.315 64.213C363.315 22.99 341.312 1 300.092 1H66.751C25.53 1 3.528 22.99 3.528 64.213v44.68l-.857.143A2 2 0 0 0 1 111.009v24.611a2 2 0 0 0 1.671 1.973l.95.158a2.26 2.26 0 0 1-.093.236v26.173c.212.1.398.296.541.643l-1.398.233A2 2 0 0 0 1 167.009v47.611a2 2 0 0 0 1.671 1.973l1.368.228c-.139.319-.314.533-.511.653v16.637c.221.104.414.313.56.689l-1.417.236A2 2 0 0 0 1 237.009v47.611a2 2 0 0 0 1.671 1.973l1.347.225c-.135.294-.302.493-.49.607v377.681c0 41.213 22 63.208 63.223 63.208h95.074c.947-.504 2.717-.843 4.745-.843l.141.001h.194l.086-.001 33.704.005c1.849.043 3.442.37 4.323.838h95.074c41.222 0 63.223-21.999 63.223-63.212v-394.63c-.259-.275-.48-.796-.63-1.47l-.011-.133 1.655-.276A2 2 0 0 0 366 266.62v-77.611a2 2 0 0 0-1.671-1.973l-1.712-.285c.148-.839.396-1.491.698-1.811V64.213Z"
-            />
-            <path
-              fill="#343E4E"
-              d="M16 59c0-23.748 19.252-43 43-43h246c23.748 0 43 19.252 43 43v615c0 23.196-18.804 42-42 42H58c-23.196 0-42-18.804-42-42V59Z"
-            />
-            <foreignObject
-              width={316}
-              height={684}
-              transform="translate(24 24)"
-              clipPath="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
-            >
-              <Image src="/images/insta.png" width={315} height={630} alt="mockup" />
-            </foreignObject>
-          </svg>
+      </section>
+
+      {/* Separator */}
+      <div className="section-separator" />
+
+      {/* Contact CTA block */}
+      <section style={{ background: 'var(--bg-primary)', paddingBlock: '88px' }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div
+            className="gold-card p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+            style={{ maxWidth: '800px' }}
+          >
+            <div>
+              <h3
+                className="font-display"
+                style={{
+                  fontSize: 'clamp(26px, 4vw, 42px)',
+                  fontWeight: 700,
+                  color: 'var(--cream)',
+                  lineHeight: 1.1,
+                }}
+              >
+                Máš záujem?<br />
+                <span style={{ color: 'var(--gold)' }}>Ozvi sa.</span>
+              </h3>
+              <p
+                style={{
+                  marginTop: '12px',
+                  color: 'var(--muted)',
+                  fontWeight: 300,
+                  maxWidth: '340px',
+                  lineHeight: 1.65,
+                }}
+              >
+                Stačí jeden hovor alebo správa. Dohodneme si osobné stretnutie čo najskôr.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+              <Link href="tel:+421918778993" className="btn-primary">
+                <IconPhone size={16} stroke={1.5} style={{ marginRight: '8px' }} />
+                0918 778 993
+              </Link>
+              <Link
+                href="https://www.instagram.com/villiz_barber/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+              >
+                <IconBrandInstagram size={16} stroke={1.5} style={{ marginRight: '8px' }} />
+                @villiz_barber
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
+      </section>
+    </main>
   )
 }
