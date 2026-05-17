@@ -38,14 +38,6 @@ export default function Kariera() {
       >
         {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/barber-wanted.jpg"
-            fill
-            alt="Barber wanted – Villiz Barbershop"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            priority
-            quality={85}
-          />
           <div
             className="absolute inset-0"
             style={{
