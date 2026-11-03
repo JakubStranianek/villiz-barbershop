@@ -10,12 +10,11 @@ const videos = [
 
 export default function VideoGaleria() {
   return (
-    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', paddingTop: '64px' }}>
+    <main className="surface-concrete" style={{ minHeight: '100vh', paddingTop: '64px' }}>
       {/* Header */}
       <div
         style={{
-          background: 'var(--bg-secondary)',
-          borderBottom: '0.5px solid rgba(200,169,126,0.2)',
+          borderBottom: '0.5px solid var(--line)',
           paddingBlock: '56px',
         }}
       >
@@ -37,7 +36,7 @@ export default function VideoGaleria() {
             style={{
               marginTop: '16px',
               color: 'var(--muted)',
-              fontWeight: 300,
+              fontWeight: 500,
               maxWidth: '400px',
               lineHeight: 1.7,
             }}
@@ -56,17 +55,17 @@ export default function VideoGaleria() {
                 fontSize: '12px',
                 letterSpacing: '0.06em',
                 color: 'var(--muted)',
-                border: '0.5px solid rgba(200,169,126,0.25)',
+                border: '0.5px solid var(--line)',
                 borderRadius: '2px',
                 transition: 'color 0.2s, border-color 0.2s',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--gold)'
-                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.5)'
+                e.currentTarget.style.borderColor = 'var(--line-strong)'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = 'var(--muted)'
-                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.25)'
+                e.currentTarget.style.borderColor = 'var(--line)'
               }}
             >
               Fotky

@@ -40,7 +40,8 @@ export default function Contact() {
   return (
     <section
       id="kontakt"
-      style={{ background: 'var(--bg-secondary)', paddingBlock: '88px' }}
+      className="surface-concrete"
+      style={{ paddingBlock: '88px' }}
     >
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section label */}
@@ -66,8 +67,23 @@ export default function Contact() {
             marginBottom: '40px',
           }}
         >
-          Nájdi nás a objednaj sa
+          Tvoj ďalší strih začína tu
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.55, delay: 0.14 }}
+          style={{
+            color: 'var(--muted)',
+            fontWeight: 500,
+            maxWidth: '480px',
+            lineHeight: 1.7,
+            marginBottom: '40px',
+          }}
+        >
+Dohodni si termín a dopraj si chvíľu pre seba. V privátnom priestore, kde sa venujem iba tebe.
+        </motion.p>
 
         {/* Contact cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">

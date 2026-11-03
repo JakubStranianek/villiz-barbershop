@@ -5,15 +5,15 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const photos = [
-  { src: '/images/gallery1.JPG', alt: 'Villiz Barbershop – interiér' },
-  { src: '/images/gallery2.JPG', alt: 'Villiz Barbershop – detail' },
-  { src: '/images/gallery3.JPG', alt: 'Villiz Barbershop – atmosféra' },
-  { src: '/images/gallery/img1.png', alt: 'Strih 1' },
-  { src: '/images/gallery/img2.png', alt: 'Strih 2' },
-  { src: '/images/gallery/img3.png', alt: 'Strih 3' },
-  { src: '/images/gallery/img4.png', alt: 'Strih 4' },
-  { src: '/images/gallery/img5.png', alt: 'Strih 5' },
-  { src: '/images/gallery/img6.png', alt: 'Strih 6' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka1.PNG', alt: 'Villiz Barbershop – interiér' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka2.PNG', alt: 'Villiz Barbershop – detail' },
+  { src: '/villiz-barbershop-barber2.PNG', alt: 'Villiz Barbershop – atmosféra' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka4.PNG', alt: 'Strih 1' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka5.PNG', alt: 'Strih 2' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka6.PNG', alt: 'Strih 3' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka7.PNG', alt: 'Strih 4' },
+  { src: '/prevadzka/villiz-barbershop-prevadzka8.PNG', alt: 'Strih 5' },
+  { src: '/villiz-barbershop-barber1.PNG', alt: 'Strih 6' },
 ]
 
 function GalleryCard({ src, alt, index }) {
@@ -27,10 +27,10 @@ function GalleryCard({ src, alt, index }) {
       className="relative overflow-hidden"
       style={{
         borderRadius: '4px',
-        border: '0.5px solid rgba(200,169,126,0.3)',
+        border: '0.5px solid var(--line)',
         cursor: 'pointer',
         transition: 'border-color 0.25s ease',
-        borderColor: hovered ? 'rgba(200,169,126,0.7)' : 'rgba(200,169,126,0.3)',
+        borderColor: hovered ? 'var(--line-strong)' : 'var(--line)',
         aspectRatio: index % 4 === 0 ? '3/4' : '4/3',
       }}
       onMouseEnter={() => setHovered(true)}
@@ -51,7 +51,7 @@ function GalleryCard({ src, alt, index }) {
       <div
         className="absolute inset-0 transition-opacity duration-300"
         style={{
-          background: 'rgba(26,26,24,0.35)',
+          background: 'rgba(16,16,16,0.28)',
           opacity: hovered ? 1 : 0,
         }}
       />
@@ -61,12 +61,11 @@ function GalleryCard({ src, alt, index }) {
 
 export default function Galeria() {
   return (
-    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', paddingTop: '64px' }}>
+    <main className="surface-concrete" style={{ minHeight: '100vh', paddingTop: '64px' }}>
       {/* Header */}
       <div
         style={{
-          background: 'var(--bg-secondary)',
-          borderBottom: '0.5px solid rgba(200,169,126,0.2)',
+          borderBottom: '0.5px solid var(--line)',
           paddingBlock: '56px',
         }}
       >
@@ -88,7 +87,7 @@ export default function Galeria() {
             style={{
               marginTop: '16px',
               color: 'var(--muted)',
-              fontWeight: 300,
+              fontWeight: 500,
               maxWidth: '400px',
               lineHeight: 1.7,
             }}
@@ -110,17 +109,17 @@ export default function Galeria() {
                 fontSize: '12px',
                 letterSpacing: '0.06em',
                 color: 'var(--muted)',
-                border: '0.5px solid rgba(200,169,126,0.25)',
+                border: '0.5px solid var(--line)',
                 borderRadius: '2px',
                 transition: 'color 0.2s, border-color 0.2s',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--gold)'
-                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.5)'
+                e.currentTarget.style.borderColor = 'var(--line-strong)'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = 'var(--muted)'
-                e.currentTarget.style.borderColor = 'rgba(200,169,126,0.25)'
+                e.currentTarget.style.borderColor = 'var(--line)'
               }}
             >
               Videá

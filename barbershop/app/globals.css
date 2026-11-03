@@ -3,17 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #1a1a18;
-  --bg-secondary: #242420;
-  --bg-card: #2e2e28;
-  --green: #2d4a32;
-  --gold: #c8a97e;
-  --gold-light: #e0c49a;
-  --gold-border: rgba(200, 169, 126, 0.25);
-  --cream: #f5f0e8;
-  --muted: #8a8678;
-  --font-display: var(--font-cormorant), 'Georgia', serif;
-  --font-body: var(--font-dm-sans), 'system-ui', sans-serif;
+  --concrete: #d3d3d3;
+  --slat: #101010;
+  --paper: #f4f2ee;
+  --ink: #1c1c1c;
+  --green: #1c4d30;
+  --green-soft: #b7cba4;
+  --bg-primary: var(--concrete);
+  --bg-secondary: var(--slat);
+  --bg-card: #f3f2f0;
+  --gold: var(--green);
+  --gold-light: #143824;
+  --gold-border: rgba(28, 28, 28, 0.14);
+  --line: rgba(28, 28, 28, 0.14);
+  --line-strong: rgba(28, 77, 48, 0.55);
+  --cream: var(--ink);
+  --muted: #3f3d39;
 }
 
 *,
@@ -24,36 +29,85 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--concrete);
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--cream);
-  font-family: var(--font-body);
-  font-weight: 400;
+  background-color: transparent;
+  color: var(--ink);
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  font-weight: 500;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 2px,
-    rgba(200, 169, 126, 0.03) 2px,
-    rgba(200, 169, 126, 0.03) 4px
-  );
 }
 
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.surface-concrete {
+  background-color: transparent;
+  background-image: none;
+  color: var(--ink);
+  --bg-primary: var(--concrete);
+  --cream: var(--ink);
+  --muted: #3f3d39;
+  --gold: var(--green);
+  --gold-light: #143824;
+  --bg-card: #f3f2f0;
+  --line: rgba(28, 28, 28, 0.14);
+  --line-strong: rgba(28, 77, 48, 0.55);
+}
+
+.concrete-wall {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  pointer-events: none;
+  background-color: var(--concrete);
+  background-image: url('/textures/concrete.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+body > :not(.concrete-wall) {
+  position: relative;
+  z-index: 1;
+}
+
+.surface-slats {
+  background-color: var(--slat);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #1b1b1b 0px,
+    #1b1b1b 11px,
+    #101010 11px,
+    #0c0c0c 13px
+  );
+  color: var(--paper);
+  --bg-primary: var(--slat);
+  --bg-secondary: var(--slat);
+  --cream: var(--paper);
+  --muted: #b7b2a8;
+  --gold: var(--green-soft);
+  --gold-light: #d7e4c8;
+  --bg-card: #161616;
+  --line: rgba(244, 242, 238, 0.16);
+  --line-strong: rgba(183, 203, 164, 0.75);
 }
 
 .section-separator {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
   border: none;
 }
 
 .section-label {
-  font-family: var(--font-body);
+  font-family: var(--font-nunito), system-ui, sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -63,8 +117,95 @@ body {
 
 .gold-card {
   background: var(--bg-card);
-  border: 0.5px solid rgba(200, 169, 126, 0.3);
+  border: 0.5px solid var(--line);
   border-radius: 4px;
+}
+
+.price-board {
+  background: var(--bg-card);
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 18px 4px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.price-table thead th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 0 16px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.price-table tbody th {
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.price-table th:last-child,
+.price-table td:last-child {
+  text-align: right;
+}
+
+.price-table td {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.price-table tr:last-child td,
+.price-table tr:last-child th {
+  border-bottom: none;
+}
+
+.price-table .price-name {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--cream);
+}
+
+.price-table .price-desc {
+  margin-top: 6px;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.price-table .price-value {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-left: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 640px) {
+  .price-board {
+    padding: 16px 40px 8px;
+  }
+
+  .price-table td {
+    padding: 28px 0;
+  }
 }
 
 .btn-primary {
@@ -72,9 +213,9 @@ body {
   align-items: center;
   justify-content: center;
   padding: 12px 32px;
-  background: var(--gold);
-  color: #1a1a18;
-  font-family: var(--font-body);
+  background: var(--green);
+  color: var(--paper);
+  font-family: var(--font-nunito), system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -84,7 +225,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
+  background: #143824;
 }
 
 .btn-ghost {
@@ -93,18 +234,18 @@ body {
   justify-content: center;
   padding: 12px 32px;
   background: transparent;
-  color: var(--cream);
-  font-family: var(--font-body);
+  color: var(--paper);
+  font-family: var(--font-nunito), system-ui, sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.06em;
-  border: 1px solid rgba(245, 240, 232, 0.4);
+  border: 1px solid rgba(244, 242, 238, 0.45);
   border-radius: 2px;
   text-decoration: none;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-ghost:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--green-soft);
+  color: var(--green-soft);
 }

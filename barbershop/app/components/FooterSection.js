@@ -5,11 +5,10 @@ import { IconBrandInstagram, IconBrandFacebook } from '@tabler/icons-react'
 
 const navLinks = [
   { name: 'Domov', href: '/' },
-  { name: 'O nás', href: '/#about' },
+  { name: 'VILLIZ Barbershop', href: '/#about' },
   { name: 'Cenník', href: '/#priceList' },
   { name: 'Recenzie', href: '/#recenzie' },
   { name: 'Galéria', href: '/galeria' },
-  { name: 'Kariéra', href: '/kariera' },
   { name: 'Kontakt', href: '/#kontakt' },
 ]
 
@@ -26,23 +25,17 @@ const socials = [
   },
 ]
 
-const LOGO_FILTER =
-  'brightness(0) saturate(100%) invert(75%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(105%)'
+const LOGO_FILTER = 'brightness(0) invert(1)'
 
 export default function FooterSection() {
   return (
-    <footer
-      style={{
-        background: 'var(--bg-primary)',
-        borderTop: '0.5px solid rgba(200,169,126,0.2)',
-      }}
-    >
+    <footer className="surface-slats" style={{ borderTop: '0.5px solid var(--line)' }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <Link href="/" aria-label="Villiz Barbershop" className="flex-shrink-0">
             <Image
-              src="/images/logoB.png"
+              src="/villiz-barbershop-logo.svg"
               width={90}
               height={28}
               alt="Villiz Barbershop"
@@ -94,12 +87,12 @@ export default function FooterSection() {
         {/* Bottom bar */}
         <div
           className="mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2"
-          style={{ borderTop: '0.5px solid rgba(200,169,126,0.12)' }}
+          style={{ borderTop: '0.5px solid var(--line)' }}
         >
-          <p style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 300 }}>
+          <p style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 500 }}>
             &copy; 2020 Villiz Barbershop. Všetky práva vyhradené.
           </p>
-          <p style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 300 }}>
+          <p style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 500 }}>
             Built with ♥ by{' '}
             <Link
               href="https://www.stranianek.dev"

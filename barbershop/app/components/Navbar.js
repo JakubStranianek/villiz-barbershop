@@ -6,34 +6,29 @@ import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const navigation = [
   { name: 'Domov', href: '/' },
-  { name: 'O nás', href: '/#about' },
+  { name: 'VILLIZ Barbershop', href: '/#about' },
   { name: 'Cenník', href: '/#priceList' },
   { name: 'Recenzie', href: '/#recenzie' },
   { name: 'Galéria', href: '/galeria' },
-  { name: 'Kariéra', href: '/kariera' },
   { name: 'Kontakt', href: '/#kontakt' },
 ]
 
-const LOGO_FILTER =
-  'brightness(0) saturate(100%) invert(75%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(105%)'
+const LOGO_FILTER = 'brightness(0) invert(1)'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        background: 'var(--bg-primary)',
-        borderBottom: '0.5px solid rgba(200,169,126,0.25)',
-      }}
+      className="surface-slats fixed top-0 left-0 right-0 z-50"
+      style={{ borderBottom: '0.5px solid var(--line)' }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" aria-label="Villiz Barbershop – domov">
             <Image
-              src="/images/logoB.png"
+              src="/villiz-barbershop-logo.svg"
               width={105}
               height={32}
               alt="Villiz Barbershop"
@@ -80,8 +75,8 @@ export default function Navbar() {
       {open && (
         <div
           style={{
-            background: 'var(--bg-secondary)',
-            borderTop: '0.5px solid rgba(200,169,126,0.15)',
+            background: 'var(--slat)',
+            borderTop: '0.5px solid var(--line)',
           }}
           className="sm:hidden"
         >

@@ -9,17 +9,10 @@ const people = [
   {
     name: 'Viliam Stranianek',
     role: 'Villiz Barber',
-    imageUrl: '/images/team1.JPG',
+    imageUrl: '/villiz-barbershop-barber1.PNG',
     instaUrl: 'https://www.instagram.com/villiz_barber',
     phoneNumber: '+421918778993',
-  },
-  {
-    name: 'Barber wanted',
-    role: 'Chceš to byť práve ty?',
-    imageUrl: '/images/barber-wanted.jpg',
-    instaUrl: 'https://www.instagram.com/villiz_barber',
-    phoneNumber: '+421918778993',
-  },
+  }
 ]
 
 export default function Team() {
@@ -29,23 +22,17 @@ export default function Team() {
   return (
     <section
       id="team"
-      style={{ background: 'var(--bg-secondary)', paddingBlock: '88px' }}
+      className="surface-slats"
+      style={{ paddingBlock: '88px' }}
     >
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section label */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="section-label">— Tím</span>
-        </motion.div>
-
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,480px)] lg:items-center lg:gap-24">
+        <div>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.08 }}
-          className="font-display mt-4"
+          className="font-display"
           style={{
             fontSize: 'clamp(32px, 5vw, 52px)',
             fontWeight: 700,
@@ -55,7 +42,7 @@ export default function Team() {
             marginBottom: '8px',
           }}
         >
-          Náš Team
+          TVOJ BARBER
         </motion.h2>
 
         <motion.p
@@ -64,37 +51,49 @@ export default function Team() {
           transition={{ duration: 0.55, delay: 0.14 }}
           style={{
             color: 'var(--muted)',
-            fontWeight: 300,
-            maxWidth: '480px',
+            fontWeight: 500,
+            maxWidth: '520px',
             lineHeight: 1.7,
-            marginBottom: '40px',
+            fontSize: '17px',
           }}
         >
-          Momentálne sa o teba postará Villiz Barber, ktorý zároveň aj náš barbershop
-          celý zastrešuje. Tešíme sa na teba.
+          Som Vilo. Teší ma.
+<br></br><br></br>
+VILLIZ je môj priestor a barberstvo moje remeslo. Zakladám si na precíznej práci, otvorenej komunikácii a tom, aby si sa u mňa cítil príjemne.
+<br></br><br></br>
+Či máš jasnú predstavu, alebo potrebuješ poradiť, spolu nájdeme strih a úpravu brady, ktoré ti sadnú. Pri každej návšteve sa o teba postarám osobne.
+<br></br><br></br>
+Viliam Stranianek<br/>
+Barber a zakladateľ VILLIZ
         </motion.p>
+        </div>
 
-        {/* Team cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
+        <div className="mt-10 lg:mt-0 lg:justify-self-end w-full max-w-md lg:max-w-none">
           {people.map((person, i) => (
             <motion.div
               key={person.name}
               initial={{ opacity: 0, y: 28 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-              className="gold-card overflow-hidden"
+              className="overflow-hidden"
+              style={{
+                background: '#f3f2f0',
+                borderRadius: '4px',
+                '--cream': '#1c1c1c',
+                '--muted': '#3f3d39',
+                '--gold': '#1c4d30',
+              }}
             >
               {/* Photo area */}
               <div
-                className="relative w-full overflow-hidden"
-                style={{ height: '220px' }}
+                className="relative w-full overflow-hidden h-72 lg:h-[460px]"
               >
                 <Image
                   src={person.imageUrl}
                   alt={person.name}
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
-                  sizes="(max-width: 640px) 100vw, 50vw"
+                  style={{ objectFit: 'cover', objectPosition: 'middle center' }}
+                  sizes="(max-width: 1024px) 100vw, 480px"
                 />
                 {/* Dark gradient overlay at bottom */}
                 <div
@@ -107,11 +106,11 @@ export default function Team() {
               </div>
 
               {/* Info */}
-              <div className="p-5">
+              <div className="p-6 lg:p-8">
                 <h3
                   className="font-display"
                   style={{
-                    fontSize: '24px',
+                    fontSize: 'clamp(28px, 3vw, 36px)',
                     fontWeight: 700,
                     color: 'var(--cream)',
                     lineHeight: 1.1,
@@ -158,6 +157,7 @@ export default function Team() {
               </div>
             </motion.div>
           ))}
+        </div>
         </div>
       </div>
     </section>
