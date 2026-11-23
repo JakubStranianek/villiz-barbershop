@@ -31,7 +31,7 @@ export default function VideoGaleria() {
               maxWidth: '520px',
             }}
           >
-            Naša práca
+            Z môjho kresla
           </h1>
           <p
             style={{
@@ -42,7 +42,7 @@ export default function VideoGaleria() {
               lineHeight: 1.7,
             }}
           >
-            Videá z nášho barbershopu.
+            Ukážky strihov, úpravy brady a atmosféra priamo z barbershopu.
           </p>
 
           {/* Tab navigation */}
