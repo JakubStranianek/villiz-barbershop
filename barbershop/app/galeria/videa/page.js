@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const videos = [
-  { id: '3ht7oixlvf', title: 'video1' },
-  { id: 'btgdfy8oth', title: 'video2' },
-  { id: 'eghkhubtpm', title: 'video3' },
+  { src: '/videos/vb_video.mp4', poster: '/videos/vb_video.jpg', title: 'Villiz Barbershop – video 1' },
+  { src: '/videos/vb_video2.mp4', poster: '/videos/vb_video2.jpg', title: 'Villiz Barbershop – video 2' },
+  { src: '/videos/vb_video3.mp4', poster: '/videos/vb_video3.jpg', title: 'Villiz Barbershop – video 3' },
+  { src: '/videos/vb_video4.mp4', poster: '/videos/vb_video4.jpg', title: 'Villiz Barbershop – video 4' },
 ]
 
 export default function VideoGaleria() {
@@ -82,45 +83,25 @@ export default function VideoGaleria() {
 
       {/* Videos grid */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {videos.map((video, i) => (
             <motion.div
-              key={video.id}
+              key={video.src}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="gold-card overflow-hidden"
-              style={{ borderRadius: '4px' }}
+              className="overflow-hidden"
+              style={{ borderRadius: '4px', border: '0.5px solid var(--line)', background: '#101010' }}
             >
-              <div
-                style={{
-                  padding: '177.5% 0 0 0',
-                  position: 'relative',
-                }}
-              >
-                <div
-                  style={{
-                    height: '100%',
-                    left: 0,
-                    position: 'absolute',
-                    top: 0,
-                    width: '100%',
-                  }}
-                >
-                  <iframe
-                    src={`https://fast.wistia.net/embed/iframe/${video.id}?videoFoam=true`}
-                    title={video.title}
-                    allow="autoplay; fullscreen"
-                    allowTransparency={true}
-                    frameBorder="0"
-                    scrolling="no"
-                    className="wistia_embed"
-                    name="wistia_embed"
-                    width="100%"
-                    height="100%"
-                  />
-                </div>
-              </div>
+              <video
+                src={video.src}
+                poster={video.poster}
+                title={video.title}
+                controls
+                playsInline
+                preload="none"
+                style={{ width: '100%', aspectRatio: '9 / 16', objectFit: 'cover', display: 'block' }}
+              />
             </motion.div>
           ))}
         </div>

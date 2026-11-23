@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const photos = [
+  { src: '/images/villiz_barber_klient.jpeg', alt: 'Villiz Barbershop – klient' },
   { src: '/prevadzka/villiz-barbershop-prevadzka1.PNG', alt: 'Villiz Barbershop – interiér' },
   { src: '/prevadzka/villiz-barbershop-prevadzka2.PNG', alt: 'Villiz Barbershop – detail' },
   { src: '/villiz-barbershop-barber2.PNG', alt: 'Villiz Barbershop – atmosféra' },
   { src: '/prevadzka/villiz-barbershop-prevadzka4.PNG', alt: 'Strih 1' },
   { src: '/prevadzka/villiz-barbershop-prevadzka5.PNG', alt: 'Strih 2' },
   { src: '/prevadzka/villiz-barbershop-prevadzka6.PNG', alt: 'Strih 3' },
+  { src: '/images/villiz_barber.jpeg', alt: 'Villiz Barbershop – barber' },
   { src: '/prevadzka/villiz-barbershop-prevadzka7.PNG', alt: 'Strih 4' },
   { src: '/prevadzka/villiz-barbershop-prevadzka8.PNG', alt: 'Strih 5' },
   { src: '/villiz-barbershop-barber1.PNG', alt: 'Strih 6' },
@@ -81,7 +83,7 @@ export default function Galeria() {
               maxWidth: '520px',
             }}
           >
-            Naša práca
+            Z môjho kresla
           </h1>
           <p
             style={{
@@ -92,7 +94,7 @@ export default function Galeria() {
               lineHeight: 1.7,
             }}
           >
-            Zábery z nášho barbershopu a ukážky našej práce.
+            Ukážky strihov, úpravy brady a atmosféra priamo z barbershopu.
           </p>
 
           {/* Tab navigation */}
